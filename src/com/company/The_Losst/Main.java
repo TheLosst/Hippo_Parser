@@ -19,7 +19,12 @@ public class Main {
             }
             //System.out.println(all_text);
         }
-        while (global < 6) {
+
+        Scanner in = new Scanner(System.in);
+        System.out.println("Введите количество лошадей в заезде :");
+        int amount_of_horses = in.nextInt();
+
+        while (global < amount_of_horses) {
             String NOMER = "", klichka = "", mast = "", naezdnik = "";
             boolean number_try = false, klichka_try = false, mast_try = false, naezdnik_try = false;
             while (!(number_try)) {
@@ -75,21 +80,21 @@ public class Main {
             global++;
             System.out.println("--------------------------------------------------------------------------");
             Hippo_Parser part = new Hippo_Parser(NOMER,klichka,mast,naezdnik);
-            Scanner in = new Scanner(System.in);
+            Scanner input = new Scanner(System.in);
             System.out.println("Введите резвость для лошади с номером " + NOMER + " " + klichka + ":");
-            String buff = in.nextLine();
+            String buff = input.nextLine();
             part.setRezvost(buff);
             System.out.println("Введите отставание лошади с номером " + NOMER + " " + klichka + ":");
-            buff = in.nextLine();
+            buff = input.nextLine();
             part.setOtstavania(buff);
             System.out.println("Введите сбои лошади с номером " + NOMER + " " + klichka + ":");
-            buff = in.nextLine();
+            buff = input.nextLine();
             part.setSboi(buff);
             System.out.println("Введите нарушения лошади с номером " + NOMER + " " + klichka + ":");
-            buff = in.nextLine();
+            buff = input.nextLine();
             part.setNarushenia(buff);
             System.out.println("Введите место на финише лошади с номером " + NOMER + " " + klichka + ":");
-            buff = in.nextLine();
+            buff = input.nextLine();
             part.setMesto(buff);
             System.out.println(part);
             }
@@ -98,4 +103,3 @@ public class Main {
         }
 
     }
-
