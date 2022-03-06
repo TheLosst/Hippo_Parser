@@ -76,7 +76,7 @@ public class Main {
             System.out.println("--------------------------------------------------------------------------");
             Hippo_Parser part = new Hippo_Parser(NOMER,klichka,mast,naezdnik);
             System.out.println(part);
-            //ObjectMapper mapper = new ObjectMapper();
+            //ObjectMapper mapper = new ObjectMappernmbnmb();
         }
 
     }
