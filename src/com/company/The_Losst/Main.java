@@ -2,7 +2,7 @@ package com.company.The_Losst;
 
 import java.io.*;
 import java.io.IOException;
-
+import java.util.Scanner;
 
 public class Main {
 
@@ -75,9 +75,27 @@ public class Main {
             global++;
             System.out.println("--------------------------------------------------------------------------");
             Hippo_Parser part = new Hippo_Parser(NOMER,klichka,mast,naezdnik);
+            Scanner in = new Scanner(System.in);
+            System.out.println("Введите резвость для лошади с номером " + NOMER + " " + klichka + ":");
+            String buff = in.nextLine();
+            part.setRezvost(buff);
+            System.out.println("Введите отставание лошади с номером " + NOMER + " " + klichka + ":");
+            buff = in.nextLine();
+            part.setOtstavania(buff);
+            System.out.println("Введите сбои лошади с номером " + NOMER + " " + klichka + ":");
+            buff = in.nextLine();
+            part.setSboi(buff);
+            System.out.println("Введите нарушения лошади с номером " + NOMER + " " + klichka + ":");
+            buff = in.nextLine();
+            part.setNarushenia(buff);
+            System.out.println("Введите место на финише лошади с номером " + NOMER + " " + klichka + ":");
+            buff = in.nextLine();
+            part.setMesto(buff);
             System.out.println(part);
+            }
+
             //ObjectMapper mapper = new ObjectMappernmbnmb();
         }
 
     }
-}
+
