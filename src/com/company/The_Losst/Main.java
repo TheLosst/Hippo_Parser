@@ -1,5 +1,8 @@
 package com.company.The_Losst;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import java.io.*;
 import java.io.IOException;
 import java.util.Scanner;
@@ -8,18 +11,20 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         int count_before = 0;
+        FileWriter writer = new FileWriter("C:\\Users\\TheLosst\\IdeaProjects\\Parser_Hippo\\src\\com\\company\\The_Losst\\out.txt");
         int global = 0;
+        Gson g = new Gson();
         String all_text = "";
         int count = 0;
         try (FileReader reader = new FileReader("C:\\Users\\TheLosst\\IdeaProjects\\Parser_Hippo\\src\\com\\company\\The_Losst\\File.txt")) {
             int c;
-
             while ((c = reader.read()) != -1) {
                 all_text += (char) c;
             }
             //System.out.println(all_text);
         }
-
+        all_text = all_text.replaceAll("\\n","");
+        all_text = all_text.replaceAll("\\r","");
         Scanner in = new Scanner(System.in);
         System.out.println("Введите количество лошадей в заезде :");
         int amount_of_horses = in.nextInt();
@@ -63,7 +68,7 @@ public class Main {
             //System.out.println("Ready " + count);
 
             if (!(naezdnik_try)) {
-                int resetID = all_text.indexOf(".", count + 30);
+                int resetID = all_text.indexOf(".", count + 40);
                 for (int i = count_before; i < resetID; i++) {
                     naezdnik += String.valueOf(all_text.charAt(i));
                     naezdnik_try = true;
@@ -81,8 +86,11 @@ public class Main {
             System.out.println("--------------------------------------------------------------------------");
             Hippo_Parser part = new Hippo_Parser(NOMER,klichka,mast,naezdnik);
             Scanner input = new Scanner(System.in);
+            System.out.println("Введите место на финише лошади с номером " + NOMER + " " + klichka + ":");
+            String  buff = input.nextLine();
+            part.setMesto(buff);
             System.out.println("Введите резвость для лошади с номером " + NOMER + " " + klichka + ":");
-            String buff = input.nextLine();
+            buff = input.nextLine();
             part.setRezvost(buff);
             System.out.println("Введите отставание лошади с номером " + NOMER + " " + klichka + ":");
             buff = input.nextLine();
@@ -93,13 +101,16 @@ public class Main {
             System.out.println("Введите нарушения лошади с номером " + NOMER + " " + klichka + ":");
             buff = input.nextLine();
             part.setNarushenia(buff);
-            System.out.println("Введите место на финише лошади с номером " + NOMER + " " + klichka + ":");
-            buff = input.nextLine();
-            part.setMesto(buff);
-            System.out.println(part);
-            }
 
-            //ObjectMapper mapper = new ObjectMappernmbnmb();
+            System.out.println(part);
+            String test = g.toJson(part);
+            System.out.println(test);
+
+            writer.append(test);
+            writer.append(",");
+            }
+            writer.close();
+            //ObjectMapper mapper = new ObjectMapper();
         }
 
     }
